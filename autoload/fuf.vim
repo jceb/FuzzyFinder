@@ -361,6 +361,7 @@ function fuf#launch(modeName, initialPattern, partialMatching)
   let s:runningHandler.stats = fuf#loadDataFile(s:runningHandler.getModeName(), 'stats')
   let s:runningHandler.partialMatching = a:partialMatching
   let s:runningHandler.bufNrPrev = bufnr('%')
+  let s:runningHandler.winNrPrev = winnr()
   let s:runningHandler.lastCol = -1
   let s:runningHandler.windowRestoringCommand = winrestcmd()
   call s:runningHandler.onModeEnterPre()
@@ -874,6 +875,7 @@ function s:handlerBase.onInsertLeave()
   call s:deactivateFufBuffer()
   call fuf#saveDataFile(self.getModeName(), 'stats', self.stats)
   execute self.windowRestoringCommand
+  exec printf("%dwincmd w", self.winNrPrev)
   let fOpen = exists('s:reservedCommand')
   if fOpen
     call self.onOpen(s:reservedCommand[0], s:reservedCommand[1])
