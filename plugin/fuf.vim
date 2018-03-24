@@ -48,6 +48,7 @@ function s:initialize()
   call l9#defineVariableDefault('g:fuf_previewHeight'    , 0)
   call l9#defineVariableDefault('g:fuf_autoPreview'      , 0)
   call l9#defineVariableDefault('g:fuf_useMigemo'        , 0)
+  call l9#defineVariableDefault('g:fuf_scratch_location' , 'leftabove')
   "---------------------------------------------------------------------------
   call l9#defineVariableDefault('g:fuf_buffer_prompt'     , '>Buffer[]>')
   call l9#defineVariableDefault('g:fuf_buffer_switchOrder', 10)
